@@ -65,10 +65,7 @@ const OneTransaction: React.FC<Props> = ({
           <div className="m-0 col-4">
             Date: {dayjs(transaction.date).format("DD.MM.YYYY HH:mm:ss")}
           </div>
-          <div className="btn-wrapper col-3 d-flex gap-3">
-            <button className="btn btn-danger" onClick={onDelete}>
-              Edit
-            </button>
+          <div className="btn-wrapper col-3 d-flex justify-content-end gap-3">
             <button
               className="btn btn-warning"
               onClick={onDelete}

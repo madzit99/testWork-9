@@ -26,11 +26,16 @@ const Transactions: React.FC<Props> = ({ onModal }) => {
     await dispatch(fetchTransactions());
   };
 
+    const totalAmount = transactions.reduce((total, transaction) => {
+      const amount = parseFloat(transaction.amount);
+      return transaction.type === "income" ? total + amount : total - amount;
+    }, 0);
+
   return (
     <>
       <div className="d-flex justify-content-between mt-3 text-align-center">
         <h1 className="m-0">Транзакции:</h1>
-        <p className="fs-2 fw-bold text-danger m-0">Баланс: 0 KGS</p>
+        <p className="fs-2 fw-bold text-danger m-0">Баланс: {totalAmount} KGS</p>
         <button className="btn btn-danger" onClick={onModal}>
           Добавить
         </button>

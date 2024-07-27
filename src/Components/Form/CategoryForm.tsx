@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ApiCategory } from "../../types";
 import ButtonSpinner from "../Spinner/ButtonSpinner";
-import { useAppDispatch } from "../../app/Hooks";
 
 const initialState: ApiCategory = {
   name: "",
@@ -24,7 +23,6 @@ const CategoryForm: React.FC<Props> = ({
   onClose
 }) => {
   const [category, setCategory] = useState<ApiCategory>(existingCategory);
-  const dispatch = useAppDispatch();
 
   const changeCategory = (
     e: React.ChangeEvent<
