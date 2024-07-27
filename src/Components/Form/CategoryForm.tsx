@@ -43,6 +43,7 @@ const CategoryForm: React.FC<Props> = ({
     onSubmit({
       ...category,
     });
+    setCategory(initialState)
   };
 
 
