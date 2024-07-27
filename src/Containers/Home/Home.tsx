@@ -1,7 +1,11 @@
+import Transactions from "../../Components/Transactions/Transactions";
+
 const Home = () => {
-    return(
-        <div></div>
-    )
-} 
+  return (
+    <div>
+      <Transactions />
+    </div>
+  );
+};
 
 export default Home;

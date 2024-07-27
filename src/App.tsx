@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Categories from "./Containers/categories/Categories";
+import Home from "./Containers/Home/Home";
 
 const App = () => {
 
@@ -8,7 +9,8 @@ const App = () => {
     <div>
       <Header />
       <Routes>
-        <Route path="/categories" element={<Categories/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
         <Route path="*" element={<h1 className="text-center">Not Found!</h1>} />
       </Routes>
     </div>
