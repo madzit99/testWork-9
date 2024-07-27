@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Toolbar: React.FC = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
       <div className="container-fluid w-50">
         <NavLink to="/" className="navbar-brand">
           Финансовый Тракер
@@ -11,9 +11,6 @@ const Toolbar: React.FC = () => {
         <ul className="navbar-nav mr-auto flex-row gap-2 flex-nowrap">
           <NavLink to="/categories" className="nav-link">
             <li className="nav-item">Категории</li>
-          </NavLink>
-          <NavLink to="/add" className="nav-link">
-            <li className="nav-item">Добавить</li>
           </NavLink>
         </ul>
       </div>

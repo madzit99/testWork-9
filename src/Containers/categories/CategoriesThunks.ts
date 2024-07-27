@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { CategoriesList, Category } from "../../types";
+import { ApiCategory, CategoriesList, Category } from "../../types";
 import axiosApi from "../../axiosApi";
 
 export const fetchCategories = createAsyncThunk<
@@ -24,4 +24,20 @@ export const fetchCategories = createAsyncThunk<
     });
   }
   return newCategories;
+});
+
+export const createCategory = createAsyncThunk<
+  void,
+  ApiCategory,
+  { state: RootState }
+>("categories/create", async (category) => {
+  await axiosApi.post("/categories.json", category);
+});
+
+export const deleteCategory = createAsyncThunk<
+  void,
+  string,
+  { state: RootState }
+>("categories/delete", async (categoryId) => {
+  await axiosApi.delete(`/categories/${categoryId}.json`);
 });

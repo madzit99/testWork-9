@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/Hooks";
-import { fetchTransactions } from "./TransactionsThunks";
+import { deleteTransaction, fetchTransactions } from "./TransactionsThunks";
 import {
   selectTransactions,
   selectTransactionsLoading,
@@ -8,7 +8,11 @@ import {
 import Spinner from "../Spinner/Spinner";
 import OneTransaction from "./OneTransaction";
 
-const Transactions = () => {
+interface Props {
+  onModal: () => void;
+}
+
+const Transactions: React.FC<Props> = ({ onModal }) => {
   const dispatch = useAppDispatch();
   const transactions = useAppSelector(selectTransactions);
   const loading = useAppSelector(selectTransactionsLoading);
@@ -17,12 +21,17 @@ const Transactions = () => {
     dispatch(fetchTransactions());
   }, [dispatch]);
 
+  const removeTransaction = async (id: string) => {
+    await dispatch(deleteTransaction(id));
+    await dispatch(fetchTransactions());
+  };
+
   return (
     <>
       <div className="d-flex justify-content-between mt-3 text-align-center">
         <h1 className="m-0">Транзакции:</h1>
-        <p className="fs-2 fw-bold text-success m-0">Баланс: 0 KGS</p>
-        <button className="btn btn-success" onClick={() => console.log("add")}>
+        <p className="fs-2 fw-bold text-danger m-0">Баланс: 0 KGS</p>
+        <button className="btn btn-danger" onClick={onModal}>
           Добавить
         </button>
       </div>
@@ -34,7 +43,7 @@ const Transactions = () => {
             <OneTransaction
               key={transaction.id}
               transaction={transaction}
-              onDelete={() => console.log("delete")}
+              onDelete={() => removeTransaction(transaction.id)}
               loading={loading}
             />
           ))

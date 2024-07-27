@@ -3,6 +3,7 @@ export interface Transaction {
   category: string;
   amount: string;
   date: string;
+  type: string;
 }
 
 export type ApiTrans = Omit<Transaction, "id">;
@@ -22,3 +23,10 @@ export type ApiCategory = Omit<Category, "id">;
 export interface CategoriesList {
   [id: string]: ApiCategory;
 }
+
+export type FormTrans = {
+  type: string;
+  category: string;
+  amount: string;
+  date: string;
+};

@@ -13,6 +13,7 @@ const OneCategory: React.FC<Props> = ({ category, onDelete, loading }) => {
   let text;
   if (category.type === "income") {
     color = "text-success";
+    text = "Доход";
   } else if (category.type === "expense") {
     color = "text-danger";
     text = "Расход";
@@ -23,9 +24,9 @@ const OneCategory: React.FC<Props> = ({ category, onDelete, loading }) => {
       <h3 className={color}>{category.name}</h3>
       <p className="m-0 ms-3">{text}</p>
       <div className="btn-wrapper d-flex gap-3 ms-auto">
-        <button className="btn btn-success">Edit</button>
+        <button className="btn btn-danger">Edit</button>
         <button
-          className="btn btn-danger"
+          className="btn btn-warning"
           onClick={onDelete}
           disabled={loading}
         >
